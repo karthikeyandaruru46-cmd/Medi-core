@@ -671,10 +671,11 @@
           </button>
         </div>
         <div class="err" id="err"></div>
-        <div style="text-align:center;margin-top:12px">
-          <span class="auth-sub" style="font-size:12.5px">New here? </span><a class="link" href="#" id="showSignup">Create an account</a>
+        <div style="display:flex;align-items:center;gap:10px;margin:14px 0 4px;color:#93a2b5;font-size:11.5px">
+          <span style="flex:1;height:1px;background:#e2e8f0"></span>Don't have an account?<span style="flex:1;height:1px;background:#e2e8f0"></span>
         </div>
-        <div style="text-align:center;margin-top:6px"><a class="link" href="#" id="showChangeCred">Change email or password</a></div>
+        <button class="btn" type="button" id="showSignup" style="width:100%;background:#fff;color:#1f6feb;border:1.5px solid #bcd6ff">Create account</button>
+        <div style="text-align:center;margin-top:10px"><a class="link" href="#" id="showChangeCred">Change email or password</a></div>
       </form>
 
       <!-- CREATE ACCOUNT: sign up if you don't have a login yet -->
@@ -6350,9 +6351,11 @@ function credChange(curEmail,curPw,newEmail,newPw){
 }
 /* Show "create account" the very first time, otherwise the normal sign-in. */
 function renderAuthMode(){
-  const has=!!credGet(), setup=document.getElementById('setupBox'), form=document.getElementById('loginForm');
-  if(setup)setup.style.display=has?'none':'';
-  if(form)form.style.display=has?'':'none';
+  /* The sign-in form is always the first thing on the page. People who don't
+   * have a login yet use the "Create account" button to switch to sign-up. */
+  const setup=document.getElementById('setupBox'), form=document.getElementById('loginForm');
+  if(setup)setup.style.display='none';
+  if(form)form.style.display='';
   const ch=document.getElementById('changeCredBox'); if(ch)ch.style.display='none';
 }
 
