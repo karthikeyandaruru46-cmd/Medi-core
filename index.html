@@ -686,8 +686,6 @@
           <div class="inp"><input type="email" id="suEmail" placeholder="you@hospital.com"></div></div>
         <div class="field"><label>Create a password</label>
           <div class="inp"><input type="password" id="suPw" placeholder="8+ characters, letters and numbers"></div></div>
-        <div class="field"><label>Confirm password</label>
-          <div class="inp"><input type="password" id="suPw2" placeholder="Repeat the password"></div></div>
         <div class="signin-row"><button class="btn signin" type="button" id="suCreate">Create account</button></div>
         <div class="err" id="suErr"></div>
         <div style="text-align:center;margin-top:12px">
@@ -1683,8 +1681,7 @@ document.getElementById('loginForm').addEventListener('submit',async e=>{
   if(c)c.onclick=()=>{
     const e=document.getElementById('suErr');
     const em=document.getElementById('suEmail').value.trim();
-    const p1=document.getElementById('suPw').value, p2=document.getElementById('suPw2').value;
-    if(p1!==p2){e.textContent='The two passwords do not match.';return;}
+    const p1=document.getElementById('suPw').value;
     const r=credSet(em,p1);
     if(!r.ok){e.textContent=r.msg;return;}
     e.textContent='';
